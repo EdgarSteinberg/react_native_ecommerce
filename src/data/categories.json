@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "Camiseta Básica",
+        "image": "https://picsum.photos/id/1011/200/150"
+    },
+    {
+        "id": 2,
+        "title": "Pantalón Jeans",
+        "image": "https://picsum.photos/id/1012/200/150"
+    },
+    {
+        "id": 3,
+        "title": "Zapatillas Urbanas",
+        "image": "https://picsum.photos/id/1013/200/150"
+    },
+    {
+        "id": 4,
+        "title": "Chaqueta Deportiva",
+        "image": "https://picsum.photos/id/1014/200/150"
+    },
+    {
+        "id": 5,
+        "title": "Bolso de Mano",
+        "image": "https://picsum.photos/id/1015/200/150"
+    },
+    {
+        "id": 6,
+        "title": "Gorra Casual",
+        "image": "https://picsum.photos/id/1016/200/150"
+    }
+]
