@@ -1,41 +1,60 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, FlatList, View, Text, Image } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Header from './src/components/header/Header';
-import categories from './src/data/categories.json'
-import FlatCard from './src/components/flatCard/flatCard';
+import CategoriesScreen from './src/screens/CategoriesScreen';
+import ProductsScreen from './src/screens/ProductsScreen';
+import { useState, useEffect } from 'react';
+import { useFonts } from 'expo-font'; // Expo Fonts
+import * as SplashScreen from 'expo-splash-screen';  // Expo Fonts
+
+SplashScreen.preventAutoHideAsync();  // Expo Fonts
+
 
 export default function App() {
+  const [categorySelected, setcategorySelected] = useState('');
 
-  const renderCategoryItem = ({ item }) => (
-    <FlatCard>
-      <View style={styles.categoryContainer}>
-        <Text>{item.title}</Text>
-        <Image width={80} height={40} source={{uri: item.image}}/>
-      </View>
-    </FlatCard>
+  const [loaded, error] = useFonts({
+    'Poppins-Regular': require('./assets/fonts/Poppins-Regular.ttf'),
+    'Poppins-Light': require('./assets/fonts/Poppins-Light.ttf'),
+    'Poppins-Italic': require('./assets/fonts/Poppins-Italic.ttf'),
+    'Poppins-Bold': require('./assets/fonts/Poppins-Bold.ttf')
 
-  )
+  });
+
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
+  }
+
 
   return (
     <>
 
       <Header title='App Mobile' />
-      <FlatList
-        data={categories}
-        renderItem={renderCategoryItem}
-        keyExtractor={item => item.id}
-      />
+
       <StatusBar style="light" />
+
+      {
+        categorySelected ? (
+
+          <ProductsScreen category={categorySelected} />
+        ) : (
+
+          <CategoriesScreen setcategorySelected={setcategorySelected} />
+        )
+
+      }
+
 
     </>
   );
 }
 
 const styles = StyleSheet.create({
-      categoryContainer: {
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          gap: 8
-      }
+
 });
