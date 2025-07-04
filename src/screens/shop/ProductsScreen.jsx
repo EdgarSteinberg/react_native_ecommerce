@@ -1,16 +1,18 @@
-import { StyleSheet, View, Text, FlatList, Image } from "react-native";
-import products from '../data/products.json'
-import FlatCard from "../components/flatCard/flatCard";
+import { StyleSheet, View, Text, FlatList, Image, Pressable } from "react-native";
+import products from '../../data/products.json'
+import FlatCard from "../../components/flatCard/flatCard";
 import { useEffect, useState } from "react";
-import Search from "../components/search/Search";
+import Search from "../../components/search/Search";
 
-const ProductsScreen = ({ category }) => {
+const ProductsScreen = ({ navigation,route }) => {
     const [productsFilterd, setProductFilterd] = useState([]);
     const [keyWord, setKeyWord] = useState('')
 
+    const { category } = route.params
+
     useEffect(() => {
         const productsFilterByCategory = products.filter(producto => producto.category.toLowerCase() === category.toLowerCase());
-        
+
         if (keyWord) {
             const productsfilteredByKeyWord = productsFilterByCategory.filter(product => product.title.toLowerCase().includes(keyWord.toLowerCase()))
             setProductFilterd(productsfilteredByKeyWord)
@@ -23,10 +25,13 @@ const ProductsScreen = ({ category }) => {
 
     // Funcion de render productos 
     const renderProductsItem = ({ item }) => (
-        <FlatCard styles={styles.categoryContainer}>
-            <Text>{item.title}</Text>
-            <Image width={80} height={40} source={{ uri: item.mainImage }} />
-        </FlatCard>
+        <Pressable onPress={() => navigation.navigate('Producto', { product: item })}>
+            <FlatCard styles={styles.categoryContainer}>
+                <Text>{item.title}</Text>
+                <Image width={80} height={40} source={{ uri: item.mainImage }} />
+            </FlatCard>
+        </Pressable>
+
     )
 
     return (

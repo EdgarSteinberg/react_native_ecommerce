@@ -1,18 +1,23 @@
 import { StyleSheet, Text, View, FlatList, Image, Pressable } from 'react-native';
-import categories from '../data/categories.json';
-import FlatCard from '../components/flatCard/flatCard';
-import TextPoppinsRegular from '../components/textPoppinsRegular/TextPoppinsRegular';
+import categories from '../../data/categories.json';
+import FlatCard from '../../components/flatCard/flatCard';
+import TextPoppinsRegular from '../../components/textPoppinsRegular/TextPoppinsRegular';
 
-const CategoriesScreen = ({ setcategorySelected }) => {
+const CategoriesScreen = ({ navigation }) => { 
 
     const renderCategoryItem = ({ item }) => (
-        <Pressable onPress={() => setcategorySelected(item.title)}> 
+        
+        <Pressable onPress={() => navigation.navigate('Productos', {category:item.title})}>
+
             <FlatCard>
+
                 <View style={styles.categoryContainer}>
                     <TextPoppinsRegular>{item.title}</TextPoppinsRegular>
                     <Image width={80} height={40} source={{ uri: item.image }} />
                 </View>
+            
             </FlatCard>
+
         </Pressable>
 
     )

@@ -1,17 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet } from 'react-native';
-import Header from './src/components/header/Header';
-import CategoriesScreen from './src/screens/CategoriesScreen';
-import ProductsScreen from './src/screens/ProductsScreen';
 import { useState, useEffect } from 'react';
 import { useFonts } from 'expo-font'; // Expo Fonts
 import * as SplashScreen from 'expo-splash-screen';  // Expo Fonts
+import { NavigationContainer } from '@react-navigation/native';
+import TabNavigator from './src/navigation/TabNavigator';
+
 
 SplashScreen.preventAutoHideAsync();  // Expo Fonts
 
-
 export default function App() {
-  const [categorySelected, setcategorySelected] = useState('');
 
   const [loaded, error] = useFonts({
     'Poppins-Regular': require('./assets/fonts/Poppins-Regular.ttf'),
@@ -33,26 +31,13 @@ export default function App() {
 
 
   return (
-    <>
-
-      <Header title='App Mobile' />
+    < NavigationContainer >
 
       <StatusBar style="light" />
-
-      {
-        categorySelected ? (
-
-          <ProductsScreen category={categorySelected} />
-        ) : (
-
-          <CategoriesScreen setcategorySelected={setcategorySelected} />
-        )
-
-      }
-
-
-    </>
-  );
+      <TabNavigator />
+      
+    </NavigationContainer >
+  )
 }
 
 const styles = StyleSheet.create({
