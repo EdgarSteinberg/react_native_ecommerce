@@ -4,11 +4,12 @@ import ProductsScreen from '../screens/shop/ProductsScreen';
 import ProductScreen from '../screens/shop/ProductScreen';
 // import { Header } from 'react-native/Libraries/NewAppScreen';
 import Header from '../components/header/Header';
+import { useSelector } from 'react-redux';
 
 const Stack = createNativeStackNavigator();
 
 const ShopStackNavigation = () => {
-
+    const category = useSelector((state) => state.shopReducer.categorySelected)
     return (
         // <Stack.Navigator
         //  initialRouteName='Categories'
@@ -19,7 +20,7 @@ const ShopStackNavigation = () => {
         <Stack.Navigator
             initialRouteName='Categorias'
             screenOptions={{
-                header: ({ route }) => <Header title={'Mundo Geek'} subTitle={route.name} />
+                header: ({ route }) => <Header title={'Mundo Geek'} /* subTitle={route.name} */ subTitle={category}  />
             }}
         >
 

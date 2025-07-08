@@ -1,20 +1,25 @@
 import { StyleSheet, View, Text, FlatList, Image, Pressable } from "react-native";
-import products from '../../data/products.json'
+/* import products from '../../data/products.json' */
 import FlatCard from "../../components/flatCard/flatCard";
 import { useEffect, useState } from "react";
 import Search from "../../components/search/Search";
+
+import { useSelector } from "react-redux";
 
 const ProductsScreen = ({ navigation,route }) => {
     const [productsFilterd, setProductFilterd] = useState([]);
     const [keyWord, setKeyWord] = useState('')
 
-    const { category } = route.params
+    const products = useSelector((state) => state.shopReducer.products);
+    const category = useSelector((state) => state.shopReducer.categorySelected)
+    /* const { category } = route.params */
 
+    const productsFilteredByCategory = useSelector((state) => state.shopReducer.productsFilterByCategory)
     useEffect(() => {
-        const productsFilterByCategory = products.filter(producto => producto.category.toLowerCase() === category.toLowerCase());
+       /*  const productsFilterByCategory = products.filter(producto => producto.category.toLowerCase() === category.toLowerCase()) */;
 
         if (keyWord) {
-            const productsfilteredByKeyWord = productsFilterByCategory.filter(product => product.title.toLowerCase().includes(keyWord.toLowerCase()))
+            const productsfilteredByKeyWord = productsFilteredByCategory.filter(product => product.title.toLowerCase().includes(keyWord.toLowerCase()))
             setProductFilterd(productsfilteredByKeyWord)
         } else {
             setProductFilterd(productsFilterByCategory)

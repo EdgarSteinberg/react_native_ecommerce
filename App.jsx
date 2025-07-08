@@ -5,7 +5,8 @@ import { useFonts } from 'expo-font'; // Expo Fonts
 import * as SplashScreen from 'expo-splash-screen';  // Expo Fonts
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigator from './src/navigation/TabNavigator';
-
+import { Provider } from 'react-redux';
+import store from './src/store';
 
 SplashScreen.preventAutoHideAsync();  // Expo Fonts
 
@@ -31,12 +32,13 @@ export default function App() {
 
 
   return (
-    < NavigationContainer >
+    <Provider store={store}>
+      < NavigationContainer >
+        <StatusBar style="light" />
+        <TabNavigator />
+      </NavigationContainer >
+    </Provider>
 
-      <StatusBar style="light" />
-      <TabNavigator />
-      
-    </NavigationContainer >
   )
 }
 
