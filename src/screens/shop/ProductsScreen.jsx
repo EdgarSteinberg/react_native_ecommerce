@@ -4,9 +4,12 @@ import FlatCard from "../../components/flatCard/flatCard";
 import { useEffect, useState } from "react";
 import Search from "../../components/search/Search";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setProductSelected } from "../../features/shop/shopSlice";
 
-const ProductsScreen = ({ navigation,route }) => {
+const ProductsScreen = ({ navigation, route }) => {
+    const dispatch = useDispatch();
+
     const [productsFilterd, setProductFilterd] = useState([]);
     const [keyWord, setKeyWord] = useState('')
 
@@ -14,7 +17,7 @@ const ProductsScreen = ({ navigation,route }) => {
     const category = useSelector((state) => state.shopReducer.categorySelected)
     /* const { category } = route.params */
 
-    const productsFilteredByCategory = useSelector((state) => state.shopReducer.productsFilterByCategory)
+    const productsFilteredByCategory = useSelector((state) => state.shopReducer.productsFilteredByCategory)
     useEffect(() => {
        /*  const productsFilterByCategory = products.filter(producto => producto.category.toLowerCase() === category.toLowerCase()) */;
 
@@ -22,7 +25,7 @@ const ProductsScreen = ({ navigation,route }) => {
             const productsfilteredByKeyWord = productsFilteredByCategory.filter(product => product.title.toLowerCase().includes(keyWord.toLowerCase()))
             setProductFilterd(productsfilteredByKeyWord)
         } else {
-            setProductFilterd(productsFilterByCategory)
+            setProductFilterd(productsFilteredByCategory)
         }
         /*  setProductFilterd(products.filter(producto => producto.category.toLowerCase() === category.toLowerCase())) */
     }, [category, keyWord])
@@ -30,7 +33,11 @@ const ProductsScreen = ({ navigation,route }) => {
 
     // Funcion de render productos 
     const renderProductsItem = ({ item }) => (
-        <Pressable onPress={() => navigation.navigate('Producto', { product: item })}>
+        <Pressable onPress={() => {
+            dispatch(setProductSelected(item))
+            navigation.navigate('Producto', { product: item })
+        }}
+        >
             <FlatCard styles={styles.categoryContainer}>
                 <Text>{item.title}</Text>
                 <Image width={80} height={40} source={{ uri: item.mainImage }} />

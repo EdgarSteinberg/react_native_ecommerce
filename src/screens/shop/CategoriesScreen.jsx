@@ -3,22 +3,22 @@ import { StyleSheet, Text, View, FlatList, Image, Pressable } from 'react-native
 import FlatCard from '../../components/flatCard/flatCard';
 import TextPoppinsRegular from '../../components/textPoppinsRegular/TextPoppinsRegular';
 
-import { useSelector, useDispatch } from 'react-redux'; 
-import { setCategorySelected,filterProducts} from '../../features/shop/shopSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCategorieSelected, filterProducts } from '../../features/shop/shopSlice';
 
-const CategoriesScreen = ({ navigation }) => { 
-    
+const CategoriesScreen = ({ navigation }) => {
+
     const categories = useSelector((state) => state.shopReducer.categories);
-    
+
     const dispatch = useDispatch();
 
     const renderCategoryItem = ({ item }) => (
-        
-        <Pressable onPress={  
-            () =>{ 
-                dispatch(setCategorySelected(item.title))
+
+        <Pressable onPress={
+            () => {
+                dispatch(setCategorieSelected(item.title))
                 dispatch(filterProducts())
-                navigation.navigate('Productos', {category:item.title})
+                navigation.navigate('Productos', { category: item.title })
             }}>
 
             <FlatCard>
@@ -27,7 +27,7 @@ const CategoriesScreen = ({ navigation }) => {
                     <TextPoppinsRegular>{item.title}</TextPoppinsRegular>
                     <Image width={80} height={40} source={{ uri: item.image }} />
                 </View>
-            
+
             </FlatCard>
 
         </Pressable>
