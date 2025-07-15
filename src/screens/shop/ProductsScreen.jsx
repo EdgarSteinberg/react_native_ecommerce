@@ -7,6 +7,7 @@ import Search from "../../components/search/Search";
 import { useSelector, useDispatch } from "react-redux";
 import { setProductSelected } from "../../features/shop/shopSlice";
 
+import { useGetProductsByCategoryQuery } from "../../services/shop/shopApi";
 const ProductsScreen = ({ navigation, route }) => {
     const dispatch = useDispatch();
 
@@ -17,7 +18,9 @@ const ProductsScreen = ({ navigation, route }) => {
     const category = useSelector((state) => state.shopReducer.categorySelected)
     /* const { category } = route.params */
 
-    const productsFilteredByCategory = useSelector((state) => state.shopReducer.productsFilteredByCategory)
+    /* const productsFilteredByCategory = useSelector((state) => state.shopReducer.productsFilteredByCategory) */
+    const { data: productsFilteredByCategory, isLoading, error } = useGetProductsByCategoryQuery(category.toLowerCase());
+
     useEffect(() => {
        /*  const productsFilterByCategory = products.filter(producto => producto.category.toLowerCase() === category.toLowerCase()) */;
 
@@ -28,7 +31,7 @@ const ProductsScreen = ({ navigation, route }) => {
             setProductFilterd(productsFilteredByCategory)
         }
         /*  setProductFilterd(products.filter(producto => producto.category.toLowerCase() === category.toLowerCase())) */
-    }, [category, keyWord])
+    }, [category, keyWord, productsFilteredByCategory])
 
 
     // Funcion de render productos 

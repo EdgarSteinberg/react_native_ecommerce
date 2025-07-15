@@ -6,11 +6,15 @@ import TextPoppinsRegular from '../../components/textPoppinsRegular/TextPoppinsR
 import { useSelector, useDispatch } from 'react-redux';
 import { setCategorieSelected, filterProducts } from '../../features/shop/shopSlice';
 
+import { useGetCategoriesQuery } from '../../services/shop/shopApi';
+
 const CategoriesScreen = ({ navigation }) => {
 
-    const categories = useSelector((state) => state.shopReducer.categories);
-
+    /* const categories = useSelector((state) => state.shopReducer.categories); */
     const dispatch = useDispatch();
+
+    const {data:categories, isLoading, error} = useGetCategoriesQuery();
+    console.log(categories);
 
     const renderCategoryItem = ({ item }) => (
 
