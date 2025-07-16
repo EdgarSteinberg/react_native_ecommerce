@@ -13,7 +13,7 @@ const CategoriesScreen = ({ navigation }) => {
     /* const categories = useSelector((state) => state.shopReducer.categories); */
     const dispatch = useDispatch();
 
-    const {data:categories, isLoading, error} = useGetCategoriesQuery();
+    const {data:categories, isLoading, error} = useGetCategoriesQuery();  //Hook de qury method GET
     console.log(categories);
 
     const renderCategoryItem = ({ item }) => (

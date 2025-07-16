@@ -1,35 +1,20 @@
-import { StyleSheet, Text, View, Pressable, Dimensions, TextInput } from "react-native";
-import { colors } from "../../global/color";
-import { useEffect, useState } from "react";
-import { useLoginMutation } from "../../services/auth/authApi";
-import { useDispatch } from "react-redux";
-import { setUser } from "../../features/user/userSlice";
+import { StyleSheet, Text, View, TextInput, Pressable, Dimensions } from 'react-native'
+import { colors } from '../../global/color';
+import { useEffect, useState } from 'react';
 
-const textInputWidth = Dimensions.get('window').width * 0.7;
 
-const LoginScreen = ({ navigation, route }) => {
-    const dispach = useDispatch();
+const textInputWidth = Dimensions.get('window').width * 0.7
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [triggerLogin, result] = useLoginMutation() //Hook Mutation method POST
-    const { message } = route.params || "";
+const SignupScreen = ({ navigation }) => {
 
-    const onSubmit = () => {
-        triggerLogin({ email, password });
-    }
-
-    //console.log(result)
-    useEffect(() => {
-        if(result.status === 'fulfilled'){
-            dispach(setUser(result.data.email))
-        }
-    }, [result])
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
 
     return (
-        <View style={styles.container}>
+        <View style={styles.gradient}>
             <Text style={styles.title}>Mundo Geek</Text>
-            <Text style={styles.subTitle}>Inicia sesión</Text>
+            <Text style={styles.subTitle}>Registrate</Text>
             <View style={styles.inputContainer}>
                 <TextInput
                     onChangeText={(text) => setEmail(text)}
@@ -44,30 +29,38 @@ const LoginScreen = ({ navigation, route }) => {
                     style={styles.textInput}
                     secureTextEntry
                 />
+                <TextInput
+                    onChangeText={(text) => setConfirmPassword(text)}
+                    placeholderTextColor={colors.white}
+                    placeholder='Repetir password'
+                    style={styles.textInput}
+                    secureTextEntry
+                />
             </View>
             <View style={styles.footTextContainer}>
-                <Text style={styles.whiteText}>¿No tienes una cuenta?</Text>
-                <Pressable onPress={() => navigation.navigate('Signup')}>
+                <Text style={styles.whiteText}>¿Ya tienes una cuenta?</Text>
+                <Pressable onPress={() => navigation.navigate('Login')}>
                     <Text style={
                         {
                             ...styles.whiteText,
                             ...styles.underLineText
                         }
                     }>
-                        Crea una
+                        Iniciar sesión
                     </Text>
                 </Pressable>
             </View>
 
-            <Pressable style={styles.btn} onPress={onSubmit}><Text style={styles.btnText}>Iniciar sesión</Text></Pressable>
+            <Pressable style={styles.btn} onPress={null}><Text style={styles.btnText}>Crear cuenta</Text></Pressable>
+
         </View>
     )
 }
 
-export default LoginScreen;
+export default SignupScreen
 
 const styles = StyleSheet.create({
-    container: {
+    gradient: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -127,9 +120,9 @@ const styles = StyleSheet.create({
         fontWeight: '700'
     },
     error: {
-        padding: 16,
-        backgroundColor: colors.red,
-        borderRadius: 8,
+        padding:16,
+        backgroundColor:colors.red,
+        borderRadius:8,
         color: colors.white
     }
 })

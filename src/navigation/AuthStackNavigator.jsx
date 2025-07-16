@@ -1,19 +1,24 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "../screens/auth/LoginScreen";
-import Header from "../components/header/Header";
+import SignupScreen from "../screens/auth/SignupScreen";
+
 
 const Stack = createNativeStackNavigator();
 
-const AuthNavigator = () => {
+const AuthStackNavigator = () => {
 
     return (
         <Stack.Navigator
-            initialRouteName="Carrito"
-            screenLayout={{
-                header: ({route}) => <Header title='Mundo Geek' subTitle={route.name}/>
+            initialRouteName="Login"
+            screenOptions={{
+                headerShown: false
             }}
         >
             <Stack.Screen name="Login" component={LoginScreen}/>
+            <Stack.Screen name="Signup" component={SignupScreen}/>
+
         </Stack.Navigator>
     )
-}
+};
+
+export default AuthStackNavigator;
