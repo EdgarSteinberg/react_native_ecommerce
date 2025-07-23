@@ -1,15 +1,19 @@
 import { StyleSheet, Text, View, Pressable, Image } from 'react-native';
 import { colors } from "../../global/color";
-import { useState } from 'react';
 import CameraIcon from '../../components/cameraIco/cameraIcon.jsx';
 import * as ImagePicker from 'expo-image-picker';/*image - picker */
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { usePutProfilePictureMutation } from '../../services/user/userApi.js';
+import { setProfilePicture } from '../../features/user/userSlice.jsx';
 
 const ProfileScreen = () => {
-    const [image, setImage] = useState(''); /*image - picker */
-
-
+    //const [image, setImage] = useState(''); /*image - picker */
     const user = useSelector(state => state.userReducer.userEmail);
+    const localId = useSelector(state => state.userReducer.localId);
+    const image = useSelector(state => state.userReducer.profilePicture);
+    const [triggerPutProfilePicture, result] = usePutProfilePictureMutation();
+
+    const dispatch = useDispatch();
 
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
@@ -18,12 +22,17 @@ const ProfileScreen = () => {
             allowsEditing: true,
             aspect: [1, 1],
             quality: 0.7,
+            base64: true
         });
 
         console.log(result);
 
         if (!result.canceled) {
-            setImage(result.assets[0].uri);
+            const imgBase64 = `data:image/jpeg;base64,${result.assets[0].base64}`
+            dispatch(setProfilePicture(imgBase64))
+            triggerPutProfilePicture({ localId: localId, image: imgBase64 })
+            //setImage(result.assets[0].uri);
+
         }
     };
 

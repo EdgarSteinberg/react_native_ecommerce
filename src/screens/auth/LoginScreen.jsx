@@ -13,7 +13,7 @@ const LoginScreen = ({ navigation, route }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [triggerLogin, result] = useLoginMutation() //Hook Mutation method POST
-    const { message } = route.params || "";
+   
 
     const onSubmit = () => {
         triggerLogin({ email, password });
@@ -21,8 +21,8 @@ const LoginScreen = ({ navigation, route }) => {
 
     //console.log(result)
     useEffect(() => {
-        if(result.status === 'fulfilled'){
-            dispach(setUser(result.data.email))
+        if (result.status === 'fulfilled') {
+            dispach(setUser({ email: result.data.email, localId: result.data.localId }))
         }
     }, [result])
 
