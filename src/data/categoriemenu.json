@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Hamburguesas"
+  },
+  {
+    "id": 2,
+    "name": "Pizzas"
+  },
+  {
+    "id": 3,
+    "name": "Sándwiches de Milanesa"
+  },
+  {
+    "id": 4,
+    "name": "Sándwiches de Bondiola"
+  },
+  {
+    "id": 5,
+    "name": "Choripanes"
+  },
+  {
+    "id": 6,
+    "name": "Papas Fritas"
+  },
+  {
+  "id": 7,
+  "name": "Bebidas"
+}
+]

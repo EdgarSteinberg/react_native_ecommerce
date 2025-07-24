@@ -1,0 +1,138 @@
+[
+    {
+        "id": 1,
+        "categoryId": 1,
+        "title": "Hamburguesa Simple",
+        "description": "Medallón de carne, pan, ketchup y mostaza.",
+        "price": 1500,
+        "image": "https://i.postimg.cc/Y2JhZV0y/hamburguesa-simple.jpg"
+    },
+    {
+        "id": 2,
+        "categoryId": 1,
+        "title": "Hamburguesa Completa",
+        "description": "Carne, lechuga, tomate, queso, mayonesa y pan casero.",
+        "price": 2000,
+        "image": "https://i.postimg.cc/Zq5dYRxF/hamburguesa-completa.jpg"
+    },
+    {
+        "id": 3,
+        "categoryId": 2,
+        "title": "Pizza Muzzarella",
+        "description": "Clásica pizza con salsa de tomate, muzzarella y orégano.",
+        "price": 2200,
+        "image": "https://i.postimg.cc/k4nWz7t3/pizza-muzzarella.jpg"
+    },
+    {
+        "id": 4,
+        "categoryId": 3,
+        "title": "Milanesa Completa",
+        "description": "Pan, milanesa, jamón, queso, lechuga, tomate y huevo.",
+        "price": 2500,
+        "image": "https://i.postimg.cc/T3KT3nvk/milanesa-completa.jpg"
+    },
+    {
+        "id": 5,
+        "categoryId": 5,
+        "title": "Choripán Completo",
+        "description": "Pan francés, chorizo, criolla, chimichurri y papas pay.",
+        "price": 1800,
+        "image": "https://i.postimg.cc/YqJdFRfK/choripan-completo.jpg"
+    },
+    {
+        "id": 6,
+        "categoryId": 6,
+        "title": "Papas Fritas con Cheddar",
+        "description": "Porción grande de papas con salsa cheddar fundido.",
+        "price": 1200,
+        "image": "https://i.postimg.cc/GhB6ZxJ3/papas-cheddar.jpg"
+    },
+    {
+        "id": 7,
+        "categoryId": 7,
+        "title": "Agua Mineral 500ml",
+        "description": "Agua mineral sin gas Villavicencio.",
+        "price": 800,
+        "image": "https://i.postimg.cc/QxGc2RwD/agua-villavicencio.jpg"
+    },
+    {
+        "id": 8,
+        "categoryId": 7,
+        "title": "Coca-Cola 500ml",
+        "description": "Gaseosa Coca-Cola clásica, botella retornable.",
+        "price": 1000,
+        "image": "https://i.postimg.cc/ZKDjHDsk/coca-cola.jpg"
+    },
+    {
+        "id": 9,
+        "categoryId": 7,
+        "title": "Fanta Naranja 500ml",
+        "description": "Gaseosa sabor naranja, ideal para el calor.",
+        "price": 950,
+        "image": "https://i.postimg.cc/K8yFdYwR/fanta.jpg"
+    },
+    {
+        "id": 10,
+        "categoryId": 7,
+        "title": "Sprite Lima-Limón 500ml",
+        "description": "Refrescante gaseosa lima-limón marca Sprite.",
+        "price": 950,
+        "image": "https://i.postimg.cc/VNqxNKgh/sprite.jpg"
+    },
+    {
+        "id": 11,
+        "categoryId": 7,
+        "title": "Jugo Baggio Durazno",
+        "description": "Jugo sabor durazno, marca Baggio de 1L.",
+        "price": 900,
+        "image": "https://i.postimg.cc/8Pbn5mSk/baggio-durazno.jpg"
+    },
+    {
+        "id": 12,
+        "categoryId": 7,
+        "title": "Jugo Cepita Naranja",
+        "description": "Jugo de naranja exprimido, marca Cepita.",
+        "price": 950,
+        "image": "https://i.postimg.cc/KYWTHJ7F/cepita-naranja.jpg"
+    },
+    {
+        "id": 13,
+        "categoryId": 7,
+        "title": "Cerveza Quilmes Clásica 1L",
+        "description": "Cerveza rubia argentina, Quilmes clásica.",
+        "price": 1300,
+        "image": "https://i.postimg.cc/D0M4TKGW/quilmes.jpg"
+    },
+    {
+        "id": 14,
+        "categoryId": 7,
+        "title": "Cerveza Andes Roja",
+        "description": "Cerveza roja andina con cuerpo y sabor intenso.",
+        "price": 1400,
+        "image": "https://i.postimg.cc/fTWb7G3Y/andes-roja.jpg"
+    },
+    {
+        "id": 15,
+        "categoryId": 7,
+        "title": "Vino Malbec La Linda",
+        "description": "Vino tinto Malbec de Bodega Luigi Bosca.",
+        "price": 2200,
+        "image": "https://i.postimg.cc/9fv1YZfQ/malbec-la-linda.jpg"
+    },
+    {
+        "id": 16,
+        "categoryId": 7,
+        "title": "Vino Cabernet Norton",
+        "description": "Cabernet Sauvignon, clásico de Bodega Norton.",
+        "price": 2100,
+        "image": "https://i.postimg.cc/3RWYhdL2/cabernet-norton.jpg"
+    },
+    {
+        "id": 17,
+        "categoryId": 7,
+        "title": "Vino Dulce Dadá 7",
+        "description": "Vino dulce natural, ideal para postres.",
+        "price": 1900,
+        "image": "https://i.postimg.cc/NF9gJkMw/dada-dulce.jpg"
+    }
+]
